@@ -131,7 +131,7 @@ class DashboardDataAPIView(APIView):
         employee_count = Employee.objects.all().count()
         department_count = Department.objects.all().count()
         visitors_count=Visitor.objects.all().count()
-      
+        
      
         data = {
             'employeeCount': employee_count,
@@ -147,7 +147,7 @@ def get_employee_leave_requests(request, employee_id):
     try:
      
         leave_requests = LeaveRequest.objects.filter(employee_id=employee_id).order_by('-start_date')
-        print(leave_requests)
+        
         serializer = LeaveSerializer(leave_requests, many=True)
       
         return Response(serializer.data, status=200)
